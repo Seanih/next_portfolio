@@ -1,6 +1,11 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import Navbar from '../components/Navbar';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 export default function Home() {
+	const [selectedPage, setSelectedPage] = useState('home');
+	const isAboveMediumScreens = useMediaQuery('(min-width: 1068px)');
 	return (
 		<div>
 			<Head>
@@ -9,9 +14,9 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main>
-				<h1>Tailwind ready to go!</h1>
-			</main>
+			<div className='app bg-deep-blue'>
+				<Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+			</div>
 		</div>
 	);
 }
